@@ -23,6 +23,7 @@ class Cuerpo(nombre: String, edad: Int, humor: Boolean, estado: Estado,
             println("Tu estado actual es:${Estado.SANO}")
 
         }else {
+
             println("Estas sanísimo.")
             this.estado = Estado.SANO
         }
