@@ -1,39 +1,31 @@
-enum class TIPO_ROPA{
+enum class Estado{DAÑADO,SANO,HERIDO}
+abstract class Persona(val nombre: String, var edad: Int, var humor: Boolean, var estado: Estado, var fuerza: Int) {
+    fun pelear(){}
 
-    PAYASO, OFICINISTA, UNIFORME_POLICIA, UNIFORME_BOMBERO
+
+
+
+
 }
+class Cuerpo(nombre: String, edad: Int, humor: Boolean, estado: Estado,
+             fuerza: Int
+):Persona(nombre, edad, humor, estado, fuerza, ){
+    fun sanando(humor: Boolean,estado: Estado){
+        if (estado == Estado.DAÑADO){
+            println("Te estas curando...")
+            println("Tu estado actual es:${Estado.HERIDO}")
+            this.estado = Estado.HERIDO
 
-enum class ARMA{
+        } else if (estado == Estado.HERIDO){
 
-    PEZ_COMICAMENTE_GRANDE, MALETIN, PISTOLA, MANGUERA
-}
+            println("Te estas curando...")
+            this.estado = Estado.SANO
+            println("Tu estado actual es:${Estado.SANO}")
 
-
-abstract class Persona(val nombre: String, var edad: Int, var humor: Boolean = true) {
-
-
-    fun enfadarse(){
-
-        humor = !humor
+        }else {
+            println("Estas sanísimo.")
+            this.estado = Estado.SANO
+        }
 
     }
-}
-
-class Payaso(nombre: String, edad: Int, humor: Boolean, tipoDeRopa: TIPO_ROPA, arma: ARMA): Persona(nombre, edad, humor){
-
-
-
-
-}
-
-class Oficinista(nombre: String, edad: Int, humor: Boolean, tipoDeRopa: TIPO_ROPA, arma: ARMA): Persona(nombre, edad, humor){
-
-}
-
-class Policia(nombre: String, edad: Int, humor: Boolean, tipoDeRopa: TIPO_ROPA, arma: ARMA): Persona(nombre, edad, humor){
-
-}
-
-class Bombero(nombre: String, edad: Int, humor: Boolean, tipoDeRopa: TIPO_ROPA, arma: ARMA): Persona(nombre, edad, humor){
-
 }
